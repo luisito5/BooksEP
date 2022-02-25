@@ -91,6 +91,7 @@ const Main = () => {
 	}
 
 	function updateBook(id) {
+		setIsPut(false);
 		const url = "http://localhost:8080/api/books/";
 		axios.put(url + id, updatedBook)
 		alert("Book updated");
@@ -117,13 +118,13 @@ const Main = () => {
 				</button>
 			</nav>
 			{!isPut ? 
-			(<div>
+			(<div style={{ width: "50%", margin: "auto auto"}}>
 				<input onChange={handleChange} name="title" value={book.title} placeholder="title"></input>
 				<input onChange={handleChange} name="author" value={book.author} placeholder="author"></input>
 				<input onChange={handleChange} name="year" value={book.year} placeholder="year"></input>
 				<button onClick={addBook}>ADD BOOK</button>
 			</div>) : (
-			<div>
+			<div style={{ width: "50%", margin: "auto auto"}}>
 			<input onChange={handleUpdate} name="title" value={updatedBook.title} placeholder="title"></input>
 			<input onChange={handleUpdate} name="author" value={updatedBook.author} placeholder="author"></input>
 			<input onChange={handleUpdate} name="year" value={updatedBook.year} placeholder="year"></input>
@@ -132,10 +133,10 @@ const Main = () => {
 			)}
 			{books.map((book) => {
 				return(
-					<div key={book._id} style={{ background: "grey", width: "40%", margin: "auto auto"}}>
-						<p>{book.title}</p>
-						<p>{book.author}</p>
-						<p>{book.year}</p>
+					<div key={book._id} style={{ background: "green", width: "40%", margin: "auto auto"}}>
+						<p>Title: &emsp; {book.title}</p>
+						<p>Author: {book.author}</p>
+						<p>Year: &emsp; {book.year}</p>
 						<button onClick={() => deleteBook(book._id)}>DELETE</button>
 						<button onClick={() => openUpdate(book._id)}>UPDATE</button>
 					</div>

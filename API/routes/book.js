@@ -6,7 +6,6 @@ const Book = require('../models/Book');
 //Get back all the books
 router.get('/', async (req, res) => {
     try{
-        console.log('Se ha entrado el get books')
         const book = await Book.find();
         res.json(book);
     } catch(err) {
@@ -33,8 +32,6 @@ router.post('/', async (req, res) => {
         year: req.body.year
     });
     try{
-        console.log('Se ha guardado el  book');
-        console.log(book);
         const savedBook = await book.save()
         res.json(savedBook);
     } catch (err) {
@@ -64,7 +61,6 @@ router.delete('/:id', async (req, res) => {
     try{
         const removeBook = await Book.deleteOne({_id: req.params.id});
         res.json(removeBook);
-        console.log("Book deleted");
     } catch(err){
         res.json({message: err});
     }
