@@ -63,13 +63,12 @@ const Main = () => {
 
 		const url = "http://localhost:8080/api/books";
 		axios.post(url, newBook);
-		console.log(newBook);
 		alert('Book added');
 
 		setBook({
 			title: "",
-			author: 0,
-			year: 0,
+			author: "",
+			year: "",
 		})
 	}
 
@@ -95,7 +94,6 @@ const Main = () => {
 		const url = "http://localhost:8080/api/books/";
 		axios.put(url + id, updatedBook)
 		alert("Book updated");
-		console.log("Book updated");
 	}
 
 	function handleUpdate(event) {
@@ -108,7 +106,6 @@ const Main = () => {
 				}
 			);
 		});
-		console.log(updatedBook)
 	}
 
 	return (
