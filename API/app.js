@@ -10,6 +10,7 @@ require('dotenv/config');
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(cors());
+app.use(express.urlencoded({extended: false}))
 
 //Import Routes
 const bookRoute = require('./routes/book')
