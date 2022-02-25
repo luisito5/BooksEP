@@ -45,9 +45,14 @@ router.post('/', async (req, res) => {
 //Update a book
 router.put('/:id', async (req, res) => {
     try{
+        const updatedValues = {
+            title: req.body.title,
+            author: req.body.author,
+            year: req.body.year
+        }
         const updatedBook = await Book.updateOne(
             {_id: req.params.id}, 
-            {$set: {title: req.body.title}});
+            {$set: updatedValues});
             res.json(updatedBook);
     } catch(err){
         res.json({message: err});
@@ -59,6 +64,7 @@ router.delete('/:id', async (req, res) => {
     try{
         const removeBook = await Book.deleteOne({_id: req.params.id});
         res.json(removeBook);
+        console.log("Book deleted");
     } catch(err){
         res.json({message: err});
     }
